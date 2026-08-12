@@ -238,3 +238,159 @@ footer{border-top:1px solid var(--line);padding:24px 0;color:#718291;font-size:1
   }
 
 }
+/* =========================================
+   BUSINESS MANAGEMENT & TRANSFORMATION
+   ========================================= */
+
+.management-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.management-card {
+  position: relative;
+  padding: 28px;
+
+  border: 1px solid var(--line);
+  border-radius: 18px;
+
+  background: rgba(255,255,255,.018);
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease;
+}
+
+.management-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(103,232,249,.25);
+}
+
+.management-number {
+  font-family: "Space Grotesk";
+  font-size: 11px;
+
+  letter-spacing: 1.5px;
+
+  color: var(--accent);
+
+  margin-bottom: 16px;
+}
+
+.management-card h3 {
+  font-family: "Space Grotesk";
+  font-size: 22px;
+
+  margin-bottom: 10px;
+}
+
+.management-card p {
+  color: var(--muted);
+
+  font-size: 13px;
+
+  line-height: 1.7;
+
+  max-width: 620px;
+}
+
+.management-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-top: 18px;
+}
+
+.management-tags span {
+  padding: 6px 9px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 100px;
+
+  color: #b8c5d0;
+
+  font-size: 9px;
+
+  letter-spacing: .3px;
+}
+
+
+/* =========================================
+   TRANSFORMATION OPERATING MODEL
+   ========================================= */
+
+.management-flow {
+  margin-top: 35px;
+
+  padding: 25px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 16px;
+
+  background: rgba(255,255,255,.012);
+}
+
+.flow-label {
+  font-size: 10px;
+
+  letter-spacing: 1.6px;
+
+  color: var(--accent);
+
+  font-weight: 700;
+
+  margin-bottom: 20px;
+}
+
+.flow-steps {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+}
+
+.flow-steps div {
+  padding: 10px 14px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 10px;
+
+  font-family: "Space Grotesk";
+
+  font-size: 12px;
+}
+
+.flow-steps span {
+  color: var(--accent);
+
+  font-size: 16px;
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+   ========================================= */
+
+@media(max-width:900px) {
+
+  .management-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flow-steps {
+    justify-content: flex-start;
+  }
+
+}
