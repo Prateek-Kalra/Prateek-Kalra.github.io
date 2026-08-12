@@ -40,14 +40,93 @@ const playbooks = {
 };
 
 document.getElementById("diagnose")?.addEventListener("click", () => {
+
   const key = document.getElementById("problem").value;
   const p = playbooks[key];
+
+  // -------------------------------
+  // Google Analytics event
+  // -------------------------------
+  if (typeof gtag === "function") {
+    gtag("event", "ai_demo_use", {
+      problem_type: key
+    });
+  }
+
+  // -------------------------------
+  // Existing AI demo output
+  // -------------------------------
   document.getElementById("aiOutput").innerHTML = `
     <strong>Recommended approach</strong>
     <p style="margin-top:8px">${p.diagnosis}</p>
-    <strong style="display:block;margin-top:14px">Suggested toolkit</strong>
-    <ul>${p.tools.map(x => `<li>${x}</li>`).join("")}</ul>
-    <strong style="display:block;margin-top:14px">Success metrics</strong>
-    <p style="margin-top:5px">${p.metric}</p>
+
+    <strong style="display:block;margin-top:14px">
+      Suggested toolkit
+    </strong>
+
+    <ul>
+      ${p.tools.map(x => `<li>${x}</li>`).join("")}
+    </ul>
+
+    <strong style="display:block;margin-top:14px">
+      Success metrics
+    </strong>
+
+    <p style="margin-top:5px">
+      ${p.metric}
+    </p>
   `;
+});
+// ================================
+// GOOGLE ANALYTICS CUSTOM EVENTS
+// ================================
+
+// Track LinkedIn clicks
+document.getElementById("linkedinHero")?.addEventListener("click", () => {
+  if (typeof gtag === "function") {
+    gtag("event", "linkedin_click", {
+      location: "hero"
+    });
+  }
+});
+
+document.getElementById("linkedinContact")?.addEventListener("click", () => {
+  if (typeof gtag === "function") {
+    gtag("event", "linkedin_click", {
+      location: "contact"
+    });
+  }
+});
+
+
+// Track résumé requests
+document.getElementById("resumeRequest")?.addEventListener("click", () => {
+  if (typeof gtag === "function") {
+    gtag("event", "resume_request", {
+      location: "hero"
+    });
+  }
+});
+
+
+// Track email requests
+document.getElementById("emailRequest")?.addEventListener("click", () => {
+  if (typeof gtag === "function") {
+    gtag("event", "email_click", {
+      location: "contact"
+    });
+  }
+});
+
+
+// Track AI transformation demo usage
+document.getElementById("diagnose")?.addEventListener("click", () => {
+  const selectedProblem =
+    document.getElementById("problem")?.value || "unknown";
+
+  if (typeof gtag === "function") {
+    gtag("event", "ai_demo_use", {
+      problem_type: selectedProblem
+    });
+  }
 });
